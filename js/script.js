@@ -5,12 +5,14 @@ var tempBar = $('#tempBar');
 var patrolBtn = $('#go-patrol');
 var guardBtn = $('#guard-em');
 var cycleTime = $('#cycle-time');
+var timerText = $('#timer');
 var currentCommand = '';
 var state = 0;
 var motion = 0;
 var noise = 0;
 var temp = 0;
 var cycle = 0;
+var timer = 0;
 setInterval(function() {
     $.ajax({
             url: 'http://10.32.176.4/chemical-x'
@@ -50,8 +52,9 @@ setInterval(function() {
                 if (cycleTime !== cycle) {
                   cycleTime.text(cycle);
                 }
-
             }
+            timer++;
+            timerText.text(timer);
             currentCommand = data;
         });
 }, 1000),
@@ -59,10 +62,12 @@ patrolBtn.click(function() {
     $.ajax({
       url: 'http://10.32.176.4/chemical-x/'+1+" "+motion+" "+noise+" "+temp+" "+cycle+"/set"
     });
+    timer = 0;
 }),
 
 guardBtn.click(function() {
     $.ajax({
       url: 'http://10.32.176.4/chemical-x/'+2+" "+motion+" "+noise+" "+temp+" "+cycle+"/set"
     });
+    timer = 0;
 });
