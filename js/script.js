@@ -19,6 +19,8 @@ var noise = 0;
 var temp = 0;
 var cycle = 0;
 var timer = 0;
+var counting = false;
+
 function setState() {
     if (state === 0) {
         robotState.text("Standby");
@@ -45,7 +47,6 @@ setInterval(function() {
                     motion = parseInt(dataValue[1]);
                     noise = parseInt(dataValue[2]);
                     temp = parseInt(dataValue[3]);
-                    cycle = parseInt(dataValue[4]);
 
                     setState();
 
@@ -58,9 +59,7 @@ setInterval(function() {
                     if (tempBar.val() !== temp) {
                         tempBar.val(temp);
                     }
-                    if (cycleTime !== cycle) {
-                        cycleTime.text(cycle);
-                    }
+
                 }
                 if (state === 1) {
                     if (timer >= patrolTime.val()) {
@@ -79,7 +78,10 @@ setInterval(function() {
     }, 1000),
     patrolBtn.click(function() {
         $.ajax({
-            url: 'http://10.32.176.4/chemical-x/' + 1 + " " + motion + " " + noise + " " + temp + " " + cycle + "/set"
+            url: 'http://10.32.176.4/chemical-x/' + 1 + " " + motion + " " + noise + " " + temp + " "//+ "/set"
+        });
+        $.ajax({
+            url: 'http://10.32.176.4/chemical-x/' + 1 + " " + motion + " " + noise + " " + temp + "/set"
         });
         setState();
         timer = 0;
@@ -87,7 +89,10 @@ setInterval(function() {
 
     guardBtn.click(function() {
         $.ajax({
-            url: 'http://10.32.176.4/chemical-x/' + 2 + " " + motion + " " + noise + " " + temp + " " + cycle + "/set"
+            url: 'http://10.32.176.4/chemical-x/' + 2 + " " + motion + " " + noise + " " + temp + " "//+ "/set"
+        });
+        $.ajax({
+            url: 'http://10.32.176.4/chemical-x/' + 2 + " " + motion + " " + noise + " " + temp + "/set"
         });
         setState();
         timer = 0;
@@ -95,17 +100,28 @@ setInterval(function() {
 
     setupBtn.click(function() {
         $.ajax({
-            url: 'http://10.32.176.4/chemical-x/' + 3 + " " + motion + " " + noise + " " + temp + " " + cycle + "/set"
+            url: 'http://10.32.176.4/chemical-x/' + 3 + " " + motion + " " + noise + " " + temp + " " //+ "/set"
+        });
+        $.ajax({
+            url: 'http://10.32.176.4/chemical-x/' + 3 + " " + motion + " " + noise + " " + temp + "/set"
         });
         setState();
+        counting = true;
         timer = 0;
     }),
 
     stopBtn.click(function() {
         $.ajax({
-            url: 'http://10.32.176.4/chemical-x/' + 0 + " " + motion + " " + noise + " " + temp + " " + cycle + "/set"
+            url: 'http://10.32.176.4/chemical-x/' + 0 + " " + motion + " " + noise + " " + temp + " " //+ "/set"
+        });
+        $.ajax({
+            url: 'http://10.32.176.4/chemical-x/' + 0 + " " + motion + " " + noise + " " + temp + "/set"
         });
         setState();
+        if(counting === true) {
+          $('#cycle-time').text(timer);
+          counting = false;
+        }
         timer = 0;
     }),
 
@@ -120,5 +136,11 @@ setInterval(function() {
     }),
 
     gEdit.click(function() {
-
+      if(guardTime.prop('disabled')) {
+        guardTime.prop('disabled', false);
+        gEdit.text("Ok");
+      } else {
+        guardTime.prop('disabled', true);
+        gEdit.text("Edit");
+      }
     });

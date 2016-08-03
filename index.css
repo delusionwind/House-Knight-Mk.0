@@ -10,10 +10,16 @@
 body {
     background-image: url('./images/header-bg.jpg');
     color: white;
-    font-size: 30px;
+    font-size: 20px;
     font-family: "Etharnig";
     font-weight: bold;
     text-align: center;
+}
+#progress {
+  margin: 20px;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto 0 auto;
 }
 #guard-em {
     background-color: #D2527F;
@@ -35,9 +41,18 @@ body {
     font-size: 20px;
     font-weight: 100;
 }
-
 #setup {
-  background-color: #913D88;
-  font-size: 30px;
-  font-weight: 200;
+    background-color: #913D88;
+    font-size: 20px;
+    font-weight: 200;
+}
+#guard-time {
+    font-size: 20px;
+    color: white;
+    text-align: center;
+}
+#patrol-time {
+    font-size: 20px;
+    color: white;
+    text-align: center;
 }
