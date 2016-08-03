@@ -25,7 +25,7 @@
 
             <div class="tab-content">
                 <div role="tabpanel" class="tab-pane active" id="main">
-                    <span id="houseStatus">House Status : Normal</span>
+                    <span>House Status : </span><span id="houseStatus">Normal</span>
                     <div><span>Predicted Threats</span>
                         <br/>
                         <textarea id="threats"></textarea>
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="control">
-                    <span id="robot-state">State: Standby</span>
+                    <span>State: </span><span id="robot-state">Standby</span>
                     <br/>
                     <button id="guard-em">Guard the current area</button>
                     <button id="go-patrol">Let's move"</button>
@@ -76,6 +76,51 @@
         </div>
     </div>
     <script type="text/javascript">
+    var robotState = $('#robot-state');
+    var currentCommand = '';
+    var state = 0;
+    var patrol = 0;
+    var guard = 0;
+    var motion = 0;
+    var noise = 0;
+    var temp = 0;
+    var buzz = 0;
+    var light = 0;
+    var cycle = 0;
+    setInterval(function() {
+      $.ajax({
+        url: 'http://10.32.176.4/chemical-x'
+    })
+    .done(function(data) {
+        if (currentCommand !== data) {
+            var dataValue = data.split(" ");
+            state = parseInt(dataValue[0]);
+            patrol = parseInt(dataValue[1]);
+            guard = parseInt(dataValue[2]);
+            motion = parseInt(dataValue[3]);
+            noise = parseInt(dataValue[4]);
+            temp = parseInt(dataValue[5]);
+            buzz = parseInt(dataValue[6]);
+            light = parseInt(dataValue[7]);
+            cycle = parseInt(dataValue[8]);
+            if(state === 0) {
+              robotState.text("Standby");
+            } else if(state === 1) {
+              robotState.text("Patrolling");
+            } else if(state === 1) {
+              robotState.text("Patrolling");
+            } else if(state === 1) {
+              robotState.text("Patrolling");
+            } else if(state === 1) {
+              robotState.text("Patrolling");
+            } else {
+              robotState.text("undefined");
+            }
+        }
+    });
+    },1000)
+
+
     </script>
 </body>
 
