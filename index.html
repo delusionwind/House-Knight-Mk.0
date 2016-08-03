@@ -3,17 +3,55 @@
 
 <head>
     <meta charset="UTF-8">
-    <title>Document</title>
+    <title>HouseKnightMK0</title>
     <!-- Latest compiled and minified CSS -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
     <!-- Optional theme -->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
     <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+    <script src="stylesheets/bootstrap.min.js"></script>
 </head>
 
 <body>
-    <div id="container"></div>
-    <script src="bundle.js"></script>
+    <div class="container">
+        <div>
+            <h1 id="">House Knight MK.0</h1>
+            <ul class="nav nav-tabs" role="tablist">
+                <li role="presentation" class="active"><a href="#main" aria-controls="main" role="tab" data-toggle="tab">Main</a></li>
+                <li role="presentation"><a href="#control" aria-controls="profile" role="tab" data-toggle="tab">Control</a></li>
+                <li role="presentation"><a href="#log" aria-controls="messages" role="tab" data-toggle="tab">Log</a></li>
+                <li role="presentation"><a href="#settings" aria-controls="settings" role="tab" data-toggle="tab">Settings</a></li>
+            </ul>
+
+
+            <div class="tab-content">
+                <div role="tabpanel" class="tab-pane active" id="main">
+                    <div><span id="houseStatus">House Status : Normal</span></div>
+                    <div><span>Predicted Threats</span>
+                        <br/>
+                        <textarea id="threats"></textarea>
+                    </div>
+                    <div>
+                        <span>Motion</span>
+                        <progress id="motion-intensity">0</progress>
+                        <br/>
+                        <span>Noise</span>
+                        <progress id="noise-intensity">0</progress>
+                        <br/>
+                        <span>Temperature</span>
+                        <progress id="motion-intensity">0</progress>
+                    </div>
+
+                </div>
+                <div role="tabpanel" class="tab-pane" id="control">111</div>
+                <div role="tabpanel" class="tab-pane" id="log">222</div>
+                <div role="tabpanel" class="tab-pane" id="settings">333</div>
+            </div>
+
+        </div>
+    </div>
+    <script type="text/javascript">
+    </script>
 </body>
 
 </html>
