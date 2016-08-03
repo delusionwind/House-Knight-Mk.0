@@ -2,81 +2,93 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <title>HouseKnightMK0</title>
-    <!-- Latest compiled and minified CSS -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
-    <!-- Optional theme -->
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
-    <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
-    <link rel="stylesheet" href="index.css">
-    <script src="stylesheets/bootstrap.min.js"></script>
-</head>
+  <meta charset="UTF-8">
+  <title>House Knight MK.0 ♡</title>
+  <!-- Latest compiled and minified CSS -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap.min.css">
+  <!-- Optional theme -->
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/latest/css/bootstrap-theme.min.css">
+  <link rel="stylesheet" href="index.css">
+  <script src="https://code.jquery.com/jquery-2.2.0.min.js"></script>
+  <script src="stylesheets/bootstrap.min.js"></script>
+  <link href='http://fonts.googleapis.com/css?family=Oswald:400,300,700' rel='stylesheet' type='text/css'>
+  <link href='http://fonts.googleapis.com/css?family=EB+Garamond' rel='stylesheet' type='text/css'>
+  <!-- Compiled and minified CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/css/materialize.min.css">
 
-<body>
-    <div class="container">
-        <div>
-            <h1 id="">House Knight MK.0</h1>
-            <ul class="nav nav-tabs" role="tablist">
-                <li role="presentation" class="active"><a href="#main" aria-controls="main" role="tab" data-toggle="tab">Main</a></li>
-                <li role="presentation"><a href="#control" aria-controls="profile" role="tab" data-toggle="tab">Control</a></li>
-                <li role="presentation"><a href="#log" aria-controls="messages" role="tab" data-toggle="tab">Log</a></li>
-            </ul>
+  <!-- Compiled and minified JavaScript -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.7/js/materialize.min.js"></script>
 
 
-            <div class="tab-content">
-                <div role="tabpanel" class="tab-pane active" id="main">
-                    <span>House Status : </span><span id="houseStatus">Normal</span>
-                    <div><span>Predicted Threats</span>
-                        <br/>
-                        <textarea id="threats"></textarea>
-                    </div>
-                    <div>
-                        <span>Motion</span>
-                        <progress id="motionBar" max="100"></progress>
-                        <br/>
-                        <span>Noise</span>
-                        <progress id="noiseBar" max="100"></progress>
-                        <br/>
-                        <span>Temperature</span>
-                        <progress id="tempBar" max="100"></progress>
-                    </div>
-                </div>
-                <div role="tabpanel" class="tab-pane" id="control">
-                    <span>State: </span><span id="robot-state">Standby</span>
-                    <span id="timer">0</span>
-                    <br/>
-                    <button id="guard-em">Guard the current area</button>
-                    <button id="go-patrol">Let's move"</button>
-                    <br/>
-                    <!-- <button id="buzz-em">Make annoying sound</button>
-                    <button id="flash-em">Flash some LED light</button>
-                    <br/> -->
-                    <span>Patrolling Interval: </span>
-                    <input disabled id="patrol-time" />
-                    <span>sec</span>
-                    <button id="ptime-edit">Edit</button>
-                    <br/>
-                    <span>Guarding Interval: </span>
-                    <input disabled id="guard-time" />
-                    <span>sec</span>
-                    <button id="gtime-edit">Edit</button>
-                    <br/>
-                    <span>Cycle Time: </span>
-                    <span id="cycle-time">80</span>
-                    <span>sec</span>
-                    <br/>
-                    <button id="setup">START SETUP MODE</button>
-                </div>
-                <div role="tabpanel" class="tab-pane" id="log">
-                    <span>History</span>
-                    <br/>
-                    <textarea id="history"></textarea>
-                </div>
-            </div>
+  <body>
+      <div class="container">
+          <div>
+              <img id="Amount" class='img-responsive container' src='./images/head5.png' />
+              <br />
 
-        </div>
-    </div>
+              <ul class="nav nav-tabs" role="tablist">
+
+                  <li role="presentation" class="active"><a href="#main" aria-controls="main" role="tab" data-toggle="tab">MAIN</a></li>
+
+                  <li role="presentation"><a href="#control" aria-controls="profile" role="tab" data-toggle="tab">CONTROL</a></li>
+                  <li role="presentation"><a href="#log" aria-controls="messages" role="tab" data-toggle="tab">LOG</a></li>
+                  <br />
+              </ul>
+
+
+              <div class="tab-content">
+                  <div role="tabpanel" class="tab-pane active" id="main">
+
+                      <span>House Status: </span><span id="houseStatus">Normal</span>
+                      <div><span>Predicted Threats</span>
+                          <br/>
+                          <textarea id="threats"></textarea>
+                      </div>
+                      <div>
+                          <span>Motion</span>
+                          <progress id="motionBar" max="100"></progress>
+                          <br/>
+                          <span>Noise</span>
+                          <progress id="noiseBar" max="100"></progress>
+                          <br/>
+                          <span>Temperature</span>
+                          <progress id="tempBar" max="100"></progress>
+                      </div>
+                  </div>
+                  <div role="tabpanel" class="tab-pane" id="control">
+                      <span>State: </span><span id="robot-state">Standby</span>
+                      <span id="timer"></span>
+                      <br/>
+                      <a id="guard-em" class="waves-effect waves-light btn">Guard the current area</a>
+                      <a id="go-patrol" class="waves-effect waves-light btn">let's move</a>
+                      <br/>
+                      <br/>
+                      <span>Patrolling Interval: </span>
+                      <input disabled id="patrol-time" value="10" />
+                      <span>sec</span>
+                      <a id="ptime-edit" class="waves-effect waves-light btn">EDIT</a>
+                      <br/>
+                      <span>Guarding Interval: </span>
+                      <input disabled id="guard-time" value="10" />
+                      <span>sec</span>
+                      <a id="gtime-edit" class="waves-effect waves-light btn">EDIT</a>
+                      <br/>
+                      <span>Cycle Time: </span>
+                      <span id="cycle-time">80</span>
+                      <span>sec</span>
+                      <br/>
+                      <a id="setup" class="waves-effect waves-light btn">START SETUP MODE</a>
+                      <a id="stop" class="waves-effect waves-light btn">STOP</a>
+                  </div>
+                  <div role="tabpanel" class="tab-pane" id="log">
+                      <span>History</span>
+                      <br/>
+                      <textarea id="history"></textarea>
+                  </div>
+              </div>
+
+          </div>
+      </div>
     <script type="text/javascript" src="./js/script.js"></script>
 </body>
 

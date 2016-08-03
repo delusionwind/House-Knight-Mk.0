@@ -1,0 +1,43 @@
+@font-face {
+    font-family: "Helvetica Neue LT Com";
+    src: url("http://db.onlinewebfonts.com/t/4bfcbca43f8e9ab6573aff70d9d3d39c.eot");
+    src: url("http://db.onlinewebfonts.com/t/4bfcbca43f8e9ab6573aff70d9d3d39c.eot?#iefix") format("embedded-opentype"), url("http://db.onlinewebfonts.com/t/4bfcbca43f8e9ab6573aff70d9d3d39c.woff2") format("woff2"), url("http://db.onlinewebfonts.com/t/4bfcbca43f8e9ab6573aff70d9d3d39c.woff") format("woff"), url("http://db.onlinewebfonts.com/t/4bfcbca43f8e9ab6573aff70d9d3d39c.ttf") format("truetype"), url("http://db.onlinewebfonts.com/t/4bfcbca43f8e9ab6573aff70d9d3d39c.svg#Helvetica Neue LT Com") format("svg");
+}
+@font-face {
+    font-family: "Etharnig";
+    src: url('./font/EtharnigSc.woff');
+}
+body {
+    background-image: url('./images/header-bg.jpg');
+    color: white;
+    font-size: 30px;
+    font-family: "Etharnig";
+    font-weight: bold;
+    text-align: center;
+}
+#guard-em {
+    background-color: #D2527F;
+    font-size: 20px;
+    font-weight: 100;
+}
+#go-patrol {
+    background-color: #D2527F;
+    font-size: 20px;
+    font-weight: 100;
+}
+#gtime-edit {
+    background-color: #1E824C;
+    font-size: 20px;
+    font-weight: 100;
+}
+#ptime-edit {
+    background-color: #1E824C;
+    font-size: 20px;
+    font-weight: 100;
+}
+
+#setup {
+  background-color: #913D88;
+  font-size: 30px;
+  font-weight: 200;
+}
