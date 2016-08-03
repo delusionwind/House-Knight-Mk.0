@@ -32,13 +32,13 @@
                     </div>
                     <div>
                         <span>Motion</span>
-                        <progress id="motion-intensity">0</progress>
+                        <progress id="motionBar" max="100"></progress>
                         <br/>
                         <span>Noise</span>
-                        <progress id="noise-intensity">0</progress>
+                        <progress id="noiseBar" max="100"></progress>
                         <br/>
                         <span>Temperature</span>
-                        <progress id="motion-intensity">0</progress>
+                        <progress id="tempBar" max="100"></progress>
                     </div>
                 </div>
                 <div role="tabpanel" class="tab-pane" id="control">
@@ -47,16 +47,16 @@
                     <button id="guard-em">Guard the current area</button>
                     <button id="go-patrol">Let's move"</button>
                     <br/>
-                    <button id="buzz-em">Make annoying sound</button>
+                    <!-- <button id="buzz-em">Make annoying sound</button>
                     <button id="flash-em">Flash some LED light</button>
-                    <br/>
+                    <br/> -->
                     <span>Patrolling Interval: </span>
-                    <input disabled id="patrol-time"/>
+                    <input disabled id="patrol-time" />
                     <span>sec</span>
                     <button id="ptime-edit">Edit</button>
                     <br/>
                     <span>Guarding Interval: </span>
-                    <input disabled id="guard-time"/>
+                    <input disabled id="guard-time" />
                     <span>sec</span>
                     <button id="gtime-edit">Edit</button>
                     <br/>
@@ -75,51 +75,7 @@
 
         </div>
     </div>
-    <script type="text/javascript">
-    var robotState = $('#robot-state');
-    var currentCommand = '';
-    var state = 0;
-    var patrol = 0;
-    var guard = 0;
-    var motion = 0;
-    var noise = 0;
-    var temp = 0;
-    var buzz = 0;
-    var light = 0;
-    var cycle = 0;
-    setInterval(function() {
-      $.ajax({
-        url: 'http://10.32.176.4/chemical-x'
-    })
-    .done(function(data) {
-        if (currentCommand !== data) {
-            var dataValue = data.split(" ");
-            state = parseInt(dataValue[0]);
-            patrol = parseInt(dataValue[1]);
-            guard = parseInt(dataValue[2]);
-            motion = parseInt(dataValue[3]);
-            noise = parseInt(dataValue[4]);
-            temp = parseInt(dataValue[5]);
-            buzz = parseInt(dataValue[6]);
-            light = parseInt(dataValue[7]);
-            cycle = parseInt(dataValue[8]);
-            if(state === 0) {
-              robotState.text("Standby");
-            } else if(state === 1) {
-              robotState.text("Patrolling");
-            } else if(state === 1) {
-              robotState.text("Patrolling");
-            } else if(state === 1) {
-              robotState.text("Patrolling");
-            } else if(state === 1) {
-              robotState.text("Patrolling");
-            } else {
-              robotState.text("undefined");
-            }
-        }
-    });
-    },1000)
-
+    <script type="text/javascript" src="./js/script.js">
 
     </script>
 </body>
