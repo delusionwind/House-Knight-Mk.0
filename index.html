@@ -45,7 +45,7 @@
                         <span>House Status: </span><span id="houseStatus">Normal</span>
                         <div><span>Predicted Threats</span>
                             <br/>
-                            <textarea id="threats"></textarea>
+                            <textarea disabled id="threats"></textarea>
                         </div>
                         <div>
                             <span>Motion</span>
@@ -84,38 +84,35 @@
                     <div role="tabpanel" class="tab-pane" id="log">
                         <span>History</span>
                         <br/>
-                        <textarea id="history"></textarea>
+                        <textarea disabled id="history"></textarea>
                     </div>
                 </div>
             </div>
         </div>
         <script>
             var bar = new ProgressBar.Circle(progress, {
-                    strokeWidth: 4,
-                    //easing: 'easeInOut',
-                    duration: 3000,
-                    color: '#FFEA82',
-                    trailColor: '#eee',
-                    trailWidth: 1,
-                    svgStyle: null
-                });
-                var patrolling = "Patrolling";
+                strokeWidth: 4,
+                //easing: 'easeInOut',
+                duration: 3000,
+                color: '#FFEA82',
+                trailColor: '#eee',
+                trailWidth: 1,
+                svgStyle: null
+            });
+            var patrolling = "Patrolling";
             var cycle = 0;
             var currentProgress = 0;
             setInterval(function() {
-              console.log(currentProgress);
                 var robotState = $('#robot-state');
-                console.log(robotState.text());
-
 
                 cycle = parseInt($('#cycle-time').text());
                 if (robotState.text() === patrolling) {
-                    currentProgress += 1.0/cycle;
+                    currentProgress += 1.0 / cycle;
                 }
                 bar.animate(currentProgress, function() {
-                  bar.animate(5);
+                    bar.animate(5);
                 })
-              }, 1000);
+            }, 1000);
 
             // bar.animate(0.5,{
             //   duration : 10000

@@ -12,6 +12,9 @@ var pEdit = $('#ptime-edit');
 var gEdit = $('#gtime-edit');
 var setupBtn = $('#setup');
 var stopBtn = $('#stop');
+var houseStatus = $('#houseStatus');
+var threats = $('#threats');
+var history = $('#history');
 var currentCommand = '';
 var state = 0;
 var motion = 0;
@@ -20,6 +23,8 @@ var temp = 0;
 var cycle = 0;
 var timer = 0;
 var counting = false;
+var threatLevel = 0;
+
 
 function setState() {
     if (state === 0) {
@@ -49,6 +54,7 @@ setInterval(function() {
                     temp = parseInt(dataValue[3]);
 
                     setState();
+                    threatLevel = 0;
 
                     if (motionBar.val() !== motion) {
                         motionBar.val(motion);
@@ -58,6 +64,49 @@ setInterval(function() {
                     }
                     if (tempBar.val() !== temp) {
                         tempBar.val(temp);
+                    }
+
+                    if (motion > 40) {
+                        threatLevel++;
+                    }
+                    if (noise > 40) {
+                        threatLevel++;
+                    }
+                    if (temp > 40) {
+                        threatLevel++;
+                    }
+
+                    var date = new Date();
+                    var now = date.toUTCString();
+
+                    if (motion > 40 && noise > 40 && temp > 40) {
+                        threats.html("");
+                    } else if (motion > 40 && noise > 40) {
+
+                    } else if (motion > 40 && temp > 40) {
+
+                    } else if (noise > 40 && temp > 40) {
+
+                    } else if (motion > 40) {
+
+                    } else if (noise > 40) {
+
+                    } else if (temp > 40) {
+
+                    }
+
+                    if (motion > 40 || noise > 40 || temp > 40) {
+                        history.append(threats.text() + "\n");
+                        history.scrollTop(history[0].scrollHeight);
+                    }
+
+                    if (threatLevel >= 2) {
+                        houseStatus.text("Dangerous");
+                        alert("Your house might be in danger!");
+                    } else if (threatLevel >= 1) {
+                        houseStatus.text("Alert");
+                    } else {
+                        houseStatus.text("Normal");
                     }
 
                 }
@@ -78,7 +127,7 @@ setInterval(function() {
     }, 1000),
     patrolBtn.click(function() {
         $.ajax({
-            url: 'http://10.32.176.4/chemical-x/' + 1 + " " + motion + " " + noise + " " + temp + " "//+ "/set"
+            url: 'http://10.32.176.4/chemical-x/' + 1 + " " + motion + " " + noise + " " + temp + " " //+ "/set"
         });
         $.ajax({
             url: 'http://10.32.176.4/chemical-x/' + 1 + " " + motion + " " + noise + " " + temp + "/set"
@@ -89,7 +138,7 @@ setInterval(function() {
 
     guardBtn.click(function() {
         $.ajax({
-            url: 'http://10.32.176.4/chemical-x/' + 2 + " " + motion + " " + noise + " " + temp + " "//+ "/set"
+            url: 'http://10.32.176.4/chemical-x/' + 2 + " " + motion + " " + noise + " " + temp + " " //+ "/set"
         });
         $.ajax({
             url: 'http://10.32.176.4/chemical-x/' + 2 + " " + motion + " " + noise + " " + temp + "/set"
@@ -118,29 +167,29 @@ setInterval(function() {
             url: 'http://10.32.176.4/chemical-x/' + 0 + " " + motion + " " + noise + " " + temp + "/set"
         });
         setState();
-        if(counting === true) {
-          $('#cycle-time').text(timer);
-          counting = false;
+        if (counting === true) {
+            $('#cycle-time').text(timer);
+            counting = false;
         }
         timer = 0;
     }),
 
     pEdit.click(function() {
-      if(patrolTime.prop('disabled')) {
-        patrolTime.prop('disabled', false);
-        pEdit.text("Ok");
-      } else {
-        patrolTime.prop('disabled', true);
-        pEdit.text("Edit");
-      }
+        if (patrolTime.prop('disabled')) {
+            patrolTime.prop('disabled', false);
+            pEdit.text("Ok");
+        } else {
+            patrolTime.prop('disabled', true);
+            pEdit.text("Edit");
+        }
     }),
 
     gEdit.click(function() {
-      if(guardTime.prop('disabled')) {
-        guardTime.prop('disabled', false);
-        gEdit.text("Ok");
-      } else {
-        guardTime.prop('disabled', true);
-        gEdit.text("Edit");
-      }
+        if (guardTime.prop('disabled')) {
+            guardTime.prop('disabled', false);
+            gEdit.text("Ok");
+        } else {
+            guardTime.prop('disabled', true);
+            gEdit.text("Edit");
+        }
     });
