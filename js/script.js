@@ -14,7 +14,7 @@ var setupBtn = $('#setup');
 var stopBtn = $('#stop');
 var houseStatus = $('#houseStatus');
 var threats = $('#threats');
-var history = $('#history');
+var histories = $('#histories');
 var currentCommand = '';
 var state = 0;
 var motion = 0;
@@ -79,25 +79,26 @@ setInterval(function() {
                     var date = new Date();
                     var now = date.toUTCString();
 
-                    if (motion > 40 && noise > 40 && temp > 40) {
-                        threats.html("");
-                    } else if (motion > 40 && noise > 40) {
-
-                    } else if (motion > 40 && temp > 40) {
-
-                    } else if (noise > 40 && temp > 40) {
-
+                    if (motion > 40 && noise > 15 && temp > 30) {
+                        threats.text("Fire or crime  " + now);
+                    } else if (motion > 40 && noise > 15) {
+                        threats.text("Intruder or animals  " + now);
+                    } else if (motion > 40 && temp > 30) {
+                        threats.text("Fire  " + now);
+                    } else if (noise > 15 && temp > 30) {
+                        threats.text("Igniting fire  " + now);
                     } else if (motion > 40) {
-
-                    } else if (noise > 40) {
-
-                    } else if (temp > 40) {
-
+                        threats.text("Intruder  " + now);
+                    } else if (noise > 15) {
+                        threats.text("Noisy sound  " + now);
+                    } else if (temp > 30) {
+                        threats.text("Hot temparature  " + now);
                     }
 
-                    if (motion > 40 || noise > 40 || temp > 40) {
-                        history.append(threats.text() + "\n");
-                        history.scrollTop(history[0].scrollHeight);
+                    if (motion > 40 || noise > 15 || temp > 30) {
+                        var oldHistory = histories.val();
+                        histories.html(oldHistory + '\n' + threats.text() + now);
+                        histories.scrollTop(histories[0].scrollHeight);
                     }
 
                     if (threatLevel >= 2) {

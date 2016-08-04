@@ -9,6 +9,7 @@
 }
 body {
     background-image: url('./images/header-bg.jpg');
+    background-attachment: fixed;
     color: white;
     font-size: 20px;
     font-family: "Etharnig";
@@ -22,27 +23,27 @@ body {
   margin: 0 auto 0 auto;
 }
 #guard-em {
-    background-color: #D2527F;
+    background-color: #67809F;
     font-size: 20px;
     font-weight: 100;
 }
 #go-patrol {
-    background-color: #D2527F;
+    background-color: #67809F;
     font-size: 20px;
     font-weight: 100;
 }
 #gtime-edit {
-    background-color: #1E824C;
+    background-color: #67809F;
     font-size: 20px;
     font-weight: 100;
 }
 #ptime-edit {
-    background-color: #1E824C;
+    background-color: #67809F;
     font-size: 20px;
     font-weight: 100;
 }
 #setup {
-    background-color: #913D88;
+    background-color: #3A539B;
     font-size: 20px;
     font-weight: 200;
 }
@@ -56,7 +57,13 @@ body {
     color: white;
     text-align: center;
 }
-#history {
+#stop {
+  font-size: 20px;
+  color: white;
+  text-align: center;
+  background-color: #D2527F;
+}
+#histories {
     font-size: 20px;
     font-weight: 100;
     text-align: center;
